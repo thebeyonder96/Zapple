@@ -5,8 +5,8 @@
   <app-tags></app-tags>
   <div class="flex flex-wrap items-center justify-center gap-4">
     <div *ngFor="let food of foods">
-      <div routerLink="/food/{{food.id}}" class="cursor-pointer bg-slate-200 flex flex-col h-[350px] items-start gap-2 border shadow-lg rounded-md overflow-hidden">
-        <img class="max-w-[320px] h-max bg-gray-500 object-cover " src="../../../../assets/pizza.avif" alt="{{food.name}}">
+      <div routerLink="/food/{{food.id}}" class="cursor-pointer bg-slate-200 w-[80vw] md:w-[30vw] flex flex-col h-[350px] md:h-[400px] items-start gap-2 border shadow-lg rounded-md overflow-hidden">
+        <img class="w-full h-[60%] md:h-[70%] bg-gray-500 object-cover object-center" src="../../../../{{food.imageUrl}}" alt="{{food.name}}">
         <div class="w-full flex items-center justify-between px-8 pt-2">
           <p class="text-xl font-medium">{{food.name}}</p>
           <span class="{{food.favorite ? 'hidden' : 'block'}}"><i class="fa-solid fa-heart text-red-500"></i></span>

@@ -6,7 +6,6 @@ import { sampleTags, sample_foods } from 'src/data';
   providedIn: 'root',
 })
 export class FoodService {
-
   constructor() {}
 
   // Get all foods
@@ -15,17 +14,26 @@ export class FoodService {
   }
 
   // Get food by search
-  getFoodBySearch(searchTerm:string){
-    return this.getAll().filter(food=> food.name.toLowerCase().includes(searchTerm.toLowerCase()))
+  getFoodBySearch(searchTerm: string) {
+    return this.getAll().filter((food) =>
+      food.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   }
 
   // Get all tags
-  getAllTags(){
+  getAllTags() {
     return sampleTags;
   }
 
   // Get food by tag
-  getFoodByTag(tag:string):food[]{
-    return tag == 'All' ? this.getAll() : this.getAll().filter(food => food.tags?.includes(tag))
+  getFoodByTag(tag: string): food[] {
+    return tag == 'All'
+      ? this.getAll()
+      : this.getAll().filter((food) => food.tags?.includes(tag));
+  }
+
+  // Get food by id
+  getFoodById(foodId: string): food {
+    return this.getAll().find(food => food.id == foodId) ?? new food()
   }
 }
