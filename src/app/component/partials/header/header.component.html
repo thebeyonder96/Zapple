@@ -1,7 +1,7 @@
 <!-- Header -->
 <header>
   <div class="flex items-center justify-between py-4 px-8">
-    <h1 routerLink="" class="text-4xl font-bold">Yummy</h1>
+    <h1 routerLink="" class="text-4xl font-bold cursor-pointer hover:drop-shadow-2xl">Yummy</h1>
     <div class="hidden md:flex relative items-center justify-between gap-6 font-medium">
       <button>Login</button>
       <div class="relative">
@@ -12,8 +12,9 @@
           <p>Logout</p>
         </div>
       </div>
-      <button class="relative">Cart <span class="absolute -top-5 -right-5 flex items-center justify-center bg-red-600 text-white w-6 h-6 rounded-full">3</span></button>
+      <button routerLink="cart-page" *ngIf="cartQuantity" class="relative">Cart <span class="absolute -top-5 -right-5 flex items-center justify-center bg-red-600 text-white w-6 h-6 rounded-full">{{cartQuantity}}</span></button>
     </div>
+
     <i class="fa-solid fa-burger text-2xl md:hidden"></i>
   </div>
 </header>

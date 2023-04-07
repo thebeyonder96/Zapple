@@ -25,6 +25,8 @@ export class CartService {
 
   removeFromCart(foodId: string) {
     this.cart.items = this.cart.items.filter((item) => {
+      console.log(item.food.id);
+
       item.food.id != foodId;
     });
     this.cartToLocalStorage();
@@ -33,9 +35,9 @@ export class CartService {
   changeQuantity(foodId: string, quantity: number) {
     let CartItem = this.cart.items.find(item => {
       console.log(item.food.id);
-      console.log(foodId);
+      // console.log(foodId);
 
-      item.food.id == foodId;
+      item.food.id === foodId;
     });
     console.log(CartItem);
 

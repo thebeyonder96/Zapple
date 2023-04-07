@@ -12,14 +12,16 @@ export class CartPageComponent {
   cart!:Cart;
 
   constructor(private cartService:CartService){
-    cartService.getCartObservable().subscribe(cart=>{
-      this.cart = cart;
+    cartService.getCartObservable().subscribe(item=>{
+      this.cart = item;
       console.log(this.cart);
 
     })
   }
 
   removeFromCart(cartItem:cartItem){
+    console.log(cartItem);
+
     this.cartService.removeFromCart(cartItem.food.id)
   }
 

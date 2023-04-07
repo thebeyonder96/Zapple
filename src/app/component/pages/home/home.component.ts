@@ -22,6 +22,7 @@ export class HomeComponent {
         this.foods = this.foodService.getFoodByTag(val.tag);
       }
       // Default all foods
+
       else {
         this.foods = foodService.getAll();
       }

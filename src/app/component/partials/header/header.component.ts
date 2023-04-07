@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   isHover=false;
+  cartQuantity=0;
+
+  constructor(private cartService:CartService){
+    cartService.getCartObservable().subscribe(val=>{
+      this.cartQuantity = val.totalCount
+    })
+  }
 
   hover(){
     this.isHover= !this.isHover
