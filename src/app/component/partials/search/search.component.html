@@ -1,0 +1,4 @@
+<section class="flex items-center justify-center px-6 py-2">
+  <input class="py-1 px-4 border border-slate-300 outline-transparent focus:ring-1 focus:ring-slate-300 rounded-l-3xl" type="search" #s (keyup.enter)="search(s.value)">
+  <button class="py-1 px-1 text-white ring-1 ring-sky-700 bg-sky-700 rounded-r-3xl" (click)="search(s.value)">Search</button>
+</section>
