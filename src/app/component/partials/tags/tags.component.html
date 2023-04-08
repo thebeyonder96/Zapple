@@ -1,5 +1,5 @@
 <section *ngIf="tags">
-  <div class="flex items-center justify-between md:justify-evenly gap-2 w-full overflow-x-auto px-4 py-2 my-4">
-    <span class="bg-slate-200 px-2 md:px-6 py-1 rounded-3xl text-sm whitespace-nowrap cursor-pointer" *ngFor="let tag of tags" routerLink="/tag/{{tag.name}}">{{tag.name}} [{{tag.count}}]</span>
+  <div class="flex items-center justify-between md:justify-center gap-2 w-full overflow-x-auto px-4 py-2 my-4">
+    <span class="bg-slate-200 px-2 md:px-6 py-1 rounded-3xl text-sm whitespace-nowrap cursor-pointer" *ngFor="let tag of tags" routerLink="/tag/{{tag.name}}">{{tag.name}} </span>
   </div>
 </section>

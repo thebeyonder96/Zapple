@@ -1,25 +1,25 @@
 <section class="flex items-center justify-center h-screen ">
-    <form class="flex flex-col items-center justify-center gap-2 px-4 py-4 rounded-md shadow-lg bg-lime-200" [formGroup]="loginForm" (ngSubmit)="submit()">
+    <form class="flex flex-col items-center justify-center md:w-[60%] gap-2 px-4 py-4 rounded-md shadow-lg bg-lime-200" [formGroup]="loginForm" (ngSubmit)="submit()">
       <h1 class="font-bold text-2xl">Login</h1>
       <p class="text-sm dark:text-gray-400 my-2">Sign in to access your account</p>
-      <div class="flex flex-col items-start justify-center ">
+      <div class="flex flex-col items-start justify-center md:px-8  md:w-full">
         <label>Email</label>
-        <input class="px-4 py-2 rounded shadow" type="text" formControlName="email">
+        <input class="px-4 py-2 rounded shadow w-full" type="text" formControlName="email">
         <div class="text-red-500 font-bold mt-2 p-2 transition-all duration-1000" *ngIf="fc.email.errors && isSubmitted" >
           <div *ngIf="fc.email.errors?.required">* Email is required</div>
           <div *ngIf="fc.email.errors?.email">* Enter a valid email</div>
         </div>
       </div>
-      <div class="flex flex-col items-start justify-center ">
+      <div class="flex flex-col items-start justify-center md:px-8  md:w-full">
         <label>Password</label>
-        <input class="px-4 py-2 rounded shadow" type="text" formControlName="password">
+        <input class="px-4 py-2 rounded shadow w-full" type="text" formControlName="password">
         <div class="text-red-500 font-bold mt-2 p-2 transition-all duration-1000" *ngIf="fc.password.errors && isSubmitted">
           <div *ngIf="fc.password.errors?.required">* Password is required</div>
           <div *ngIf="fc.password.errors?.minlength">* Minimum 8 characters</div>
         </div>
       </div>
-      <div class="flex flex-col items-center justify-center my-2">
-        <button class="px-4 py-2 rounded shadow bg-cyan-500" type="submit">Login</button>
+      <div class="flex flex-col items-center justify-center md:px-8 my-2 md:w-full">
+        <button class="px-4 py-2 md:px-10 rounded shadow bg-primary text-white" type="submit">Login</button>
       </div>
     </form>
 </section>

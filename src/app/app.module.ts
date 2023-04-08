@@ -14,6 +14,8 @@ import { NotFoundComponent } from './component/partials/not-found/not-found.comp
 import { HttpClientModule } from '@angular/common/http';
 import { LoginPageComponent } from './component/pages/login-page/login-page.component'
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,15 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(
+      {
+        timeOut:3000
+      }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,7 +7,7 @@
   *ngIf="!foods || !foods.length"
     ResetText=""
   ></app-not-found>
-  <div class="flex flex-wrap items-center justify-center gap-4">
+  <div class="flex flex-wrap items-center justify-center gap-4 py-6 mb-4">
     <div *ngFor="let food of foods">
       <div routerLink="/food/{{food.id}}" class="cursor-pointer bg-slate-200 w-[80vw] md:w-[30vw] flex flex-col h-[350px] md:h-[400px] items-start gap-2 border shadow-lg rounded-md overflow-hidden">
         <img class="w-full h-[60%] md:h-[70%] bg-gray-500 object-cover object-center" src="../../../../{{food.imageUrl}}" alt="{{food.name}}">

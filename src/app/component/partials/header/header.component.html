@@ -1,9 +1,9 @@
 <!-- Header -->
 <header>
   <div class="flex items-center justify-between py-4 px-8">
-    <h1 routerLink="" class="text-4xl font-bold cursor-pointer hover:drop-shadow-2xl">Yummy</h1>
+    <h1 routerLink="" class="text-primary text-2xl md:text-3xl font-bold cursor-pointer hover:drop-shadow-2xl"><i class="fa-solid fa-apple-whole"></i> Zapple</h1>
     <div class="hidden md:flex relative items-center justify-between gap-6 font-medium">
-      <button>Login</button>
+      <button routerLink="/login">Login</button>
       <div class="relative">
         <button class="" (click)="hover()">Akshay &nbsp; <i class="fa-solid fa-caret-down"></i></button>
         <div [class.down]="isHover" class="absolute -bottom-20 opacity-0 text-black/60 transition-all duration-700">
@@ -12,9 +12,26 @@
           <p class="cursor-pointer hover:text-black">Logout</p>
         </div>
       </div>
-      <button routerLink="cart-page" *ngIf="cartQuantity" class="relative">Cart <span class="absolute -top-5 -right-5 flex items-center justify-center bg-red-600 text-white w-6 h-6 rounded-full">{{cartQuantity}}</span></button>
+      <button routerLink="cart-page" *ngIf="cartQuantity" class="relative">Cart <span class="absolute -top-5 -right-5 flex items-center justify-center bg-primary text-white w-6 h-6 rounded-full">{{cartQuantity}}</span></button>
     </div>
 
-    <i class="fa-solid fa-burger text-2xl md:hidden"></i>
+    <!-- Toggle Nav -->
+    <div class=" md:hidden" (click)="toggleNav()"><i class="fa-solid fa-burger text-2xl text-primary pr-2"></i></div>
+
+    <div [class.nav]="isShow"
+      class="w-2/3 h-screen flex flex-col items-start gap-2 pt-20 pl-20 fixed right-0 top-0 z-50 backdrop-blur-3xl border-l-4 border-black transition-transform duration-700 translate-x-[100%]">
+      <i (click)="toggleNav()" class="fa-solid fa-xmark text-red-500 text-2xl absolute top-5 right-5"></i>
+
+      <!-- Search -->
+
+      <!-- Links -->
+      <button routerLink="cart-page" (click)="toggleNav()" *ngIf="cartQuantity" class="relative md:hidden  text-lg font-bold">Cart <span
+          class="absolute -top-5 -right-5 flex items-center justify-center text-lg font-bold bg-primary text-white w-6 h-6 rounded-full">{{cartQuantity}}</span></button>
+
+      <a (click)="toggleNav()" class="text-lg font-bold drop-shadow-2xl" routerLink="">Home</a>
+      <a (click)="toggleNav()" class="text-lg font-bold drop-shadow-2xl" routerLink="">Profile</a>
+      <a (click)="toggleNav()" class="text-lg font-bold drop-shadow-2xl" routerLink="">Orders</a>
+      <a (click)="toggleNav()" class="text-lg font-bold drop-shadow-2xl" routerLink="">Log Out</a>
+    </div>
   </div>
 </header>
