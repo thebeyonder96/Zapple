@@ -1,5 +1,5 @@
-<app-not-found *ngIf="!Food.id" message="Food not found" ResetText="Go to Homepage"></app-not-found>
-<section *ngIf="Food.id">
+<app-not-found *ngIf="!Food" message="Food not found" ResetText="Go to Homepage"></app-not-found>
+<section *ngIf="Food">
   <div class="flex flex-col items-center m-4 rounded-md overflow-hidden">
     <img class="w-full h-[50vh] object-cover object-center" src="./../../../../{{Food.imageUrl}}" alt="">
     <div class="flex flex-col items-start bg-slate-300 w-full gap-2 px-4 py-2">

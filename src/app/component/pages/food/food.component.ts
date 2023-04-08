@@ -15,7 +15,9 @@ export class FoodComponent {
    constructor(private route:ActivatedRoute,private foodService:FoodService,private cartService:CartService,private router:Router){
     route.params.subscribe(val=>{
       if(val.id){
-        this.Food = foodService.getFoodById(val.id)
+        foodService.getFoodById(val.id).subscribe(val=>{
+          this.Food= val;
+        })
         console.log(this.Food);
 
       }

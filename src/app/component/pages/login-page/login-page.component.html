@@ -1,0 +1,27 @@
+<section class="flex items-center justify-center h-screen ">
+    <form class="flex flex-col items-center justify-center gap-2 px-4 py-4 rounded-md shadow-lg bg-lime-200" [formGroup]="loginForm" (ngSubmit)="submit()">
+      <h1 class="font-bold text-2xl">Login</h1>
+      <p class="text-sm dark:text-gray-400 my-2">Sign in to access your account</p>
+      <div class="flex flex-col items-start justify-center ">
+        <label>Email</label>
+        <input class="px-4 py-2 rounded shadow" type="text" formControlName="email">
+        <div class="text-red-500 font-bold mt-2 p-2 transition-all duration-1000" *ngIf="fc.email.errors && isSubmitted" >
+          <div *ngIf="fc.email.errors?.required">* Email is required</div>
+          <div *ngIf="fc.email.errors?.email">* Enter a valid email</div>
+        </div>
+      </div>
+      <div class="flex flex-col items-start justify-center ">
+        <label>Password</label>
+        <input class="px-4 py-2 rounded shadow" type="text" formControlName="password">
+        <div class="text-red-500 font-bold mt-2 p-2 transition-all duration-1000" *ngIf="fc.password.errors && isSubmitted">
+          <div *ngIf="fc.password.errors?.required">* Password is required</div>
+          <div *ngIf="fc.password.errors?.minlength">* Minimum 8 characters</div>
+        </div>
+      </div>
+      <div class="flex flex-col items-center justify-center my-2">
+        <button class="px-4 py-2 rounded shadow bg-cyan-500" type="submit">Login</button>
+      </div>
+    </form>
+</section>
+
+
