@@ -1,0 +1,58 @@
+<section class="flex items-center justify-center h-screen ">
+  <form [formGroup]="registerForm" (ngSubmit)="submit()" class="flex flex-col items-center justify-center md:w-[60%] gap-2 px-4 py-4 rounded-md shadow-lg"
+    >
+    <h1 class="font-bold text-2xl">Sign Up</h1>
+    <p class="text-sm dark:text-gray-400 my-2">Sign up to create your account</p>
+    <div class="flex flex-col items-start justify-center md:px-8  md:w-full">
+      <label>Name</label>
+      <input class="px-4 py-2 rounded shadow w-full focus:outline-primary" type="text" formControlName="name">
+      <div class="text-red-500 font-bold mt-2 p-2 transition-all duration-1000" *ngIf="fc.name.errors && isSubmitted">
+        <div *ngIf="fc.name.errors?.required">* Email is required</div>
+        <div *ngIf="fc.name.errors?.minlength">* Minimum 5 letters</div>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-start justify-center md:px-8  md:w-full">
+      <label>Email</label>
+      <input class="px-4 py-2 rounded shadow w-full focus:outline-primary" type="email" formControlName="email">
+      <div class="text-red-500 font-bold mt-2 p-2 transition-all duration-1000" *ngIf="fc.email.errors && isSubmitted">
+        <div *ngIf="fc.email.errors?.required">* Email is required</div>
+        <div *ngIf="fc.email.errors?.email">* Enter a valid email</div>
+      </div>
+    </div>
+    <div class="flex flex-col items-start justify-center md:px-8  md:w-full">
+      <label>Password</label>
+      <input class="px-4 py-2 rounded shadow w-full focus:outline-primary" type="password" formControlName="password">
+      <div class="text-red-500 font-bold mt-2 p-2 transition-all duration-1000"
+        *ngIf="fc.password.errors && isSubmitted">
+        <div *ngIf="fc.password.errors?.required">* Password is required</div>
+        <div *ngIf="fc.password.errors?.minlength">* Minimum 8 characters</div>
+      </div>
+    </div>
+    <div class="flex flex-col items-start justify-center md:px-8  md:w-full">
+      <label>Confirm Password</label>
+      <input class="px-4 py-2 rounded shadow w-full focus:outline-primary" type="password" formControlName="confirmPassword">
+      <div class="text-red-500 font-bold mt-2 p-2 transition-all duration-1000"
+        *ngIf="fc.confirmPassword.errors && isSubmitted">
+        <div *ngIf="fc.confirmPassword.errors?.required">* Password is required</div>
+        <div>{{fc.confirmPassword.errors.validator}}</div>
+      </div>
+    </div>
+    <div class="flex flex-col items-start justify-center md:px-8  md:w-full">
+      <label>Address</label>
+      <input class="px-4 py-2 rounded shadow w-full focus:outline-primary" type="text" formControlName="address">
+      <div class="text-red-500 font-bold mt-2 p-2 transition-all duration-1000"
+        *ngIf="fc.address.errors && isSubmitted">
+        <div *ngIf="fc.address.errors?.required">* Address is required</div>
+        <div *ngIf="fc.address.errors?.minlength">* Minimum 10 characters</div>
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-center md:px-8 my-2 md:w-full">
+      <button class="px-4 py-2 md:px-10 rounded shadow bg-primary text-white" type="submit">Sign Up</button>
+    </div>
+
+    <div>
+      <p>Already a user ? <a routerLink="/login" [queryParams]="{returnUrl:returnUrl}">Login</a></p>
+    </div>
+  </form>
+</section>

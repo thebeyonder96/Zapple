@@ -18,8 +18,6 @@ export class FoodComponent {
         foodService.getFoodById(val.id).subscribe(val=>{
           this.Food= val;
         })
-        console.log(this.Food);
-
       }
     })
    }

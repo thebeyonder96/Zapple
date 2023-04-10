@@ -1,4 +1,4 @@
-<section class="flex flex-col items-center justify-center">
+<section class="flex flex-col items-center justify-center mt-24">
   <app-not-found *ngIf="!cart || cart.items.length == 0" message="cart is Empty !!!"
     ResetText="Go to Homepage"></app-not-found>
   <div *ngIf="cart && cart.items.length != 0" class="flex flex-col max-w-3xl md:w-screen p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100">

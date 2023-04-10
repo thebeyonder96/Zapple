@@ -1,18 +1,18 @@
 <!-- Header -->
 <header>
-  <div class="flex items-center justify-between py-4 px-8">
+  <div class="flex items-center justify-between py-4 px-8 md:px-32 z-40">
     <h1 routerLink="" class="text-primary text-2xl md:text-3xl font-bold cursor-pointer hover:drop-shadow-2xl"><i class="fa-solid fa-apple-whole"></i> Zapple</h1>
-    <div class="hidden md:flex relative items-center justify-between gap-6 font-medium">
-      <button routerLink="/login">Login</button>
-      <div class="relative">
-        <button class="" (click)="hover()">Akshay &nbsp; <i class="fa-solid fa-caret-down"></i></button>
+    <div class="hidden md:flex relative items-center justify-between gap-6 font-medium pr-4">
+      <button *ngIf="!isAuth" routerLink="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+      <div *ngIf="isAuth" class="relative">
+        <button class="" (click)="hover()"><i class="fa-solid fa-user"></i> {{userData.name}} &nbsp; <i class="fa-solid fa-caret-down"></i></button>
         <div [class.down]="isHover" class="absolute -bottom-20 opacity-0 text-black/60 transition-all duration-700">
-          <p class="cursor-pointer hover:text-black">Profile</p>
+          <p class="cursor-pointer hover:text-black"> Profile</p>
           <p class="cursor-pointer hover:text-black">Orders</p>
-          <p class="cursor-pointer hover:text-black">Logout</p>
+          <p (click)="logout()" class="cursor-pointer hover:text-black">Logout</p>
         </div>
       </div>
-      <button routerLink="cart-page" *ngIf="cartQuantity" class="relative">Cart <span class="absolute -top-5 -right-5 flex items-center justify-center bg-primary text-white w-6 h-6 rounded-full">{{cartQuantity}}</span></button>
+      <button routerLink="cart-page" *ngIf="cartQuantity" class="relative"><i class="fa-solid fa-cart-shopping"></i> Cart <span class="absolute -top-5 -right-5 flex items-center justify-center bg-primary text-white w-6 h-6 rounded-full">{{cartQuantity}}</span></button>
     </div>
 
     <!-- Toggle Nav -->

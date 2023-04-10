@@ -1,3 +1,24 @@
+<!-- How it works -->
+
+<section class="mt-20">
+  <h1 class="text-2xl text-center my-2 uppercase">How it works ?</h1>
+  <div class="flex flex-col md:flex-row md:px-32 md:flex-wrap items-center justify-center gap-4 px-6">
+    <div class="flex flex-1 md:basis-[30%] flex-col items-center justify-center shadow-xl w-full lg:w-[350px] py-4 rounded-md cursor-pointer hover:scale-105 transition-all duration-700">
+      <i class="fa-solid fa-bowl-food text-9xl mb-2 text-primary"></i>
+      <h1 class="text-slate-700">Choose your favorite food</h1>
+    </div>
+    <div class="flex flex-1 md:basis-[30%] flex-col items-center justify-center shadow-xl w-full lg:w-[350px] py-4 rounded-md cursor-pointer hover:scale-105 transition-all duration-700">
+      <i class="fa-solid fa-truck text-9xl mb-2 text-primary"></i>
+      <h1 class="text-slate-700">We deliver it to your doorstep</h1>
+    </div>
+    <div class="flex flex-1 md:basis-[30%] flex-col items-center justify-center shadow-xl w-full lg:w-[350px] py-4 rounded-md cursor-pointer hover:scale-105 transition-all duration-700">
+      <i class="fa-solid fa-cookie-bite text-9xl mb-2 text-primary"></i>
+      <h1 class="text-slate-700">Eat and Enjoy !</h1>
+    </div>
+  </div>
+</section>
+
+
 <!-- Food -->
 
 <section>
@@ -7,7 +28,7 @@
   *ngIf="!foods || !foods.length"
     ResetText=""
   ></app-not-found>
-  <div class="flex flex-wrap items-center justify-center gap-4 py-6 mb-4">
+  <div class="flex flex-wrap items-center justify-center gap-4 py-6 mb-4 md:px-32">
     <div *ngFor="let food of foods">
       <div routerLink="/food/{{food.id}}" class="cursor-pointer bg-slate-200 w-[80vw] md:w-[30vw] flex flex-col h-[350px] md:h-[400px] items-start gap-2 border shadow-lg rounded-md overflow-hidden">
         <img class="w-full h-[60%] md:h-[70%] bg-gray-500 object-cover object-center" src="../../../../{{food.imageUrl}}" alt="{{food.name}}">
@@ -20,7 +41,7 @@
         </div>
         <div class="px-8  w-full flex items-center">
           <span class="text-sm whitespace-nowrap text-slate-500"><i class="fa-solid fa-clock"></i> &nbsp; :&nbsp; {{food.cookTime}} min</span>
-          <h1 class="font-bold text-xl text-right w-full">&nbsp; {{food.price | currency}}</h1>
+          <h1 class="font-bold text-xl text-right w-full">&nbsp; {{food.price | currency :'INR'}}</h1>
         </div>
       </div>
     </div>

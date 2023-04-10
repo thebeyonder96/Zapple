@@ -4,6 +4,21 @@
 @tailwind utilities;
 
 @layer base{
+  h1{
+    @apply text-slate-700
+  }
+  p{
+    @apply text-slate-600
+  }
+  label{
+    @apply text-slate-600
+  }
+  a{
+    @apply text-slate-600
+  }
+  button{
+    @apply text-slate-600
+  }
   input{
     @apply px-4 py-2 rounded shadow
   }
