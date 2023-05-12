@@ -1,0 +1,26 @@
+<section class="grid place-items-center mt-24 p-4">
+  <div class="flex flex-col">
+    <div>
+      <div class="bg-slate-100 shadow-md rounded flex flex-col gap-2 item-center justify-center">
+        <h1 class="font-bold text-2xl">Order Form</h1>
+        <form class="flex flex-col gap-2 item-center justify-center" [formGroup]="checkoutForm">
+          <input class="w-full shadow-md" type="text" formControlName="name">
+          <input class="w-full shadow-md" type="text" formControlName="address">
+        </form>
+      </div>
+
+      <app-checkout-order-list [order]="order"></app-checkout-order-list>
+    </div>
+
+
+    <div>
+      <h1 class="font-bold text-2xl">Choose your address</h1>
+      <!-- <map></map> -->
+    </div>
+
+  </div>
+  <div>
+    <button class="px-4 py-2 md:px-10 rounded shadow bg-primary text-white" (click)="createOrder()">Go to
+      payment</button>
+  </div>
+</section>

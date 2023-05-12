@@ -13,33 +13,42 @@ export class LoginPageComponent implements OnInit {
   isSubmitted = false;
   returnUrl = '';
 
-  constructor(private formBuilder: FormBuilder ,private userService:UserService ,private route:ActivatedRoute ,private router:Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
-
-    this.returnUrl =  this.route.snapshot.queryParams.returnUrl;
+    // Get the url from where you accessed login
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl;
   }
 
-  get fc(){
+  get fc() {
     return this.loginForm.controls;
   }
 
-  submit(){
-    this.isSubmitted=true;
-    if(this.loginForm.invalid) return;
+  submit() {
+    this.isSubmitted = true;
+    if (this.loginForm.invalid) return;
     let loginData = {
       email: this.fc.email.value,
       password: this.fc.password.value,
     };
 
-    this.userService.login(loginData).subscribe((val)=>{
+    this.userService.login(loginData).subscribe((val) => {
       console.log(val);
-
-      this.router.navigateByUrl(this.returnUrl)
-    })
+      if (val.isAdmin) {
+        this.router.navigate(['/admin']);
+      } else {
+        this.router.navigateByUrl(this.returnUrl);
+      }
+      // Return to the url from where you accessed login
+    });
   }
 }

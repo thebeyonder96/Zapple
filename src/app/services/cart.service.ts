@@ -27,13 +27,14 @@ export class CartService {
     this.cart.items = this.cart.items.filter((item) => {
       console.log(item.food.id);
 
-      item.food.id != foodId;
+      return item.food.id != foodId;
     });
+
     this.cartToLocalStorage();
   }
 
   changeQuantity(foodId: string, quantity: number) {
-    let CartItem = this.cart.items.find(item => {
+    let CartItem = this.cart.items.find((item) => {
       console.log(item.food.id);
       // console.log(foodId);
 
@@ -43,7 +44,6 @@ export class CartService {
 
     if (!CartItem) return;
     console.log(CartItem);
-
 
     CartItem.quantity = quantity;
     CartItem.price = quantity * CartItem.food.price;
@@ -60,6 +60,10 @@ export class CartService {
     return this.cartSubject.asObservable();
   }
 
+  getCart(): Cart {
+    return this.cartSubject.value;
+  }
+
   private cartToLocalStorage() {
     this.cart.totalPrice = this.cart.items.reduce(
       (prevSum, currentItem) => prevSum + currentItem.price,
@@ -70,14 +74,15 @@ export class CartService {
       0
     );
 
+    console.log(this.cart.totalPrice, this.cart.totalCount);
+
     const cartJson = JSON.stringify(this.cart);
     localStorage.setItem('Cart', cartJson);
     this.cartSubject.next(this.cart);
-    console.log(this.cart);
   }
 
   private cartFromLocalStorage(): Cart {
-    const cartJSON = localStorage.getItem('cart');
+    const cartJSON = localStorage.getItem('Cart');
     return cartJSON ? JSON.parse(cartJSON) : new Cart();
   }
 }

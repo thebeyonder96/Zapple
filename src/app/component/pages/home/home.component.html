@@ -1,17 +1,20 @@
 <!-- How it works -->
 
-<section class="mt-20">
+<section class="mt-20 max-w-screen-xl mx-auto">
   <h1 class="text-2xl text-center my-2 uppercase">How it works ?</h1>
-  <div class="flex flex-col md:flex-row md:px-32 md:flex-wrap items-center justify-center gap-4 px-6">
-    <div class="flex flex-1 md:basis-[30%] flex-col items-center justify-center shadow-xl w-full lg:w-[350px] py-4 rounded-md cursor-pointer hover:scale-105 transition-all duration-700">
+  <div class="grid gap-4 place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+    <div
+      class="flex flex-col items-center justify-center w-full aspect-square py-4 px-4 rounded-md cursor-pointer hover:scale-105 transition-all duration-700">
       <i class="fa-solid fa-bowl-food text-9xl mb-2 text-primary"></i>
       <h1 class="text-slate-700">Choose your favorite food</h1>
     </div>
-    <div class="flex flex-1 md:basis-[30%] flex-col items-center justify-center shadow-xl w-full lg:w-[350px] py-4 rounded-md cursor-pointer hover:scale-105 transition-all duration-700">
+    <div
+      class="flex flex-col items-center justify-center w-full aspect-square py-4 px-4 rounded-md cursor-pointer hover:scale-105 transition-all duration-700">
       <i class="fa-solid fa-truck text-9xl mb-2 text-primary"></i>
       <h1 class="text-slate-700">We deliver it to your doorstep</h1>
     </div>
-    <div class="flex flex-1 md:basis-[30%] flex-col items-center justify-center shadow-xl w-full lg:w-[350px] py-4 rounded-md cursor-pointer hover:scale-105 transition-all duration-700">
+    <div
+      class="flex flex-col items-center justify-center w-full aspect-square py-4 px-4 rounded-md cursor-pointer hover:scale-105 transition-all duration-700">
       <i class="fa-solid fa-cookie-bite text-9xl mb-2 text-primary"></i>
       <h1 class="text-slate-700">Eat and Enjoy !</h1>
     </div>
@@ -24,11 +27,8 @@
 <section>
   <app-search></app-search>
   <app-tags></app-tags>
-  <app-not-found
-  *ngIf="!foods || !foods.length"
-    ResetText=""
-  ></app-not-found>
-  <div class="flex flex-wrap items-center justify-center gap-4 py-6 mb-4 md:px-32">
+  <app-not-found *ngIf="!foods || !foods.length" ResetText=""></app-not-found>
+  <!-- <div class="flex flex-wrap items-center justify-center gap-4 py-6 mb-4 md:px-32">
     <div *ngFor="let food of foods">
       <div routerLink="/food/{{food.id}}" class="cursor-pointer bg-slate-200 w-[80vw] md:w-[30vw] flex flex-col h-[350px] md:h-[400px] items-start gap-2 border shadow-lg rounded-md overflow-hidden">
         <img class="w-full h-[60%] md:h-[70%] bg-gray-500 object-cover object-center" src="../../../../{{food.imageUrl}}" alt="{{food.name}}">
@@ -43,6 +43,29 @@
           <span class="text-sm whitespace-nowrap text-slate-500"><i class="fa-solid fa-clock"></i> &nbsp; :&nbsp; {{food.cookTime}} min</span>
           <h1 class="font-bold text-xl text-right w-full">&nbsp; {{food.price | currency :'INR'}}</h1>
         </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <div
+    class="w-screen grid place-items-center gap-4 md:gap-6 md:m-4 p-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div *ngFor="let food of foods" routerLink="/food/{{food.id}}"
+      class="bg-gradient-to-r from-slate-100 via-zinc-100 to-stone-100 h-full">
+      <div class="relative min-w-[320px] aspect-[3/2] px-4 overflow-hidden">
+        <img class="relative w-full h-full object-cover" src="../../../../{{food.imageUrl}}" alt="">
+      </div>
+      <div class="w-full flex items-center justify-between px-8 pt-2">
+        <p class="text-xl font-medium">{{food.name}}</p>
+        <span class="{{food.favorite ? 'hidden' : 'block'}}"><i class="fa-solid fa-heart text-red-500"></i></span>
+      </div>
+      <div class="px-8  w-full flex items-center gap-2 capitalize text-xs text-slate-500">
+        <span *ngFor="let tags of food.origins">{{tags}}</span>
+      </div>
+      <div class="px-8 pb-2 w-full flex items-center">
+        <span class="text-sm whitespace-nowrap text-slate-500"><i class="fa-solid fa-clock"></i> &nbsp; :&nbsp;
+          {{food.cookTime}} min</span>
+        <h1 class="font-bold text-xl text-right w-full pb-2">&nbsp; {{food.price | currency :'INR'}}</h1>
       </div>
     </div>
   </div>

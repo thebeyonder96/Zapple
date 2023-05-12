@@ -6,28 +6,27 @@ import { cartItem } from 'src/app/shared/models/cartItem';
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
-  styleUrls: ['./cart-page.component.scss']
+  styleUrls: ['./cart-page.component.scss'],
 })
 export class CartPageComponent {
-  cart!:Cart;
+  cart!: Cart;
 
-  constructor(private cartService:CartService){
-    cartService.getCartObservable().subscribe(item=>{
+  constructor(private cartService: CartService) {
+    cartService.getCartObservable().subscribe((item) => {
       this.cart = item;
-      console.log(this.cart);
-
-    })
+    });
   }
 
-  removeFromCart(cartItem:cartItem){
+  removeFromCart(cartItem: cartItem) {
     console.log(cartItem);
 
-    this.cartService.removeFromCart(cartItem.food.id)
+    this.cartService.removeFromCart(cartItem.food.id);
+    console.log(cartItem.food.id);
   }
 
-  changeQuantity(cartItem:cartItem,quantityInString:string){
+  changeQuantity(cartItem: cartItem, quantityInString: string) {
     const quantity = parseInt(quantityInString);
     console.log(quantity);
-    this.cartService.changeQuantity(cartItem.food.id,quantity)
+    this.cartService.changeQuantity(cartItem.food.id, quantity);
   }
 }

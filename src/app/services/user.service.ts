@@ -6,6 +6,7 @@ import { IUserLogin } from '../shared/interface/IUserLogin';
 import { USER_LOGIN_URL, USER_REGISTER_URL } from '../shared/constants/url';
 import { ToastrService } from 'ngx-toastr';
 import { IUserRegister } from '../shared/interface/IUserRegister';
+import { Router } from '@angular/router';
 
 const USER_KEY = 'user';
 @Injectable({
@@ -16,8 +17,16 @@ export class UserService {
     this.getUserFromLocalStorage()
   );
   public userObservable: Observable<User>;
-  constructor(private http: HttpClient, private toast: ToastrService) {
+  constructor(
+    private http: HttpClient,
+    private toast: ToastrService,
+    private router: Router
+  ) {
     this.userObservable = this.userSubject.asObservable();
+  }
+
+  public get currentUser(): User {
+    return this.userSubject.value;
   }
 
   login(userLogin: IUserLogin): Observable<User> {
@@ -38,25 +47,29 @@ export class UserService {
     );
   }
 
-  register(userRegister:IUserRegister):Observable<User>{
-    return this.http.post<User>(USER_REGISTER_URL,userRegister).pipe(tap(
-      {
-        next: (user)=>{
+  register(userRegister: IUserRegister): Observable<User> {
+    return this.http.post<User>(USER_REGISTER_URL, userRegister).pipe(
+      tap({
+        next: (user) => {
           this.setUserToLocalStorage(user);
           this.userSubject.next(user);
-          this.toast.success(`Welcome to Zapple ${user.name}`,'Registration Successful')
+          this.toast.success(
+            `Welcome to Zapple ${user.name}`,
+            'Registration Successful'
+          );
         },
-        error: error=>{
-          this.toast.error(error.error,'Registration failed')
-        }
-      }
-    ))
+        error: (error) => {
+          this.toast.error(error.error, 'Registration failed');
+        },
+      })
+    );
   }
 
-  logout(){
+  logout() {
     this.userSubject.next(new User());
     localStorage.removeItem(USER_KEY);
-    window.location.reload()
+    // window.location.reload();
+    this.router.navigate(['/']);
   }
 
   private setUserToLocalStorage(user: User) {

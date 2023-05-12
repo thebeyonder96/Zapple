@@ -1,0 +1,27 @@
+<div class="col-span-1 bg-white">
+  <h1 class="py-6 border-b-2 text-xl text-gray-600 px-8">Order Summary</h1>
+  <ul *ngFor="let item of order.items" class="py-6 border-b space-y-6 px-8">
+    <li routerLink="/food/{{item.food.id}}" class="grid grid-cols-6 gap-2 border-b-1">
+      <div class="col-span-1 self-center">
+        <img [src]="item.food.imageUrl" alt="Product" class="rounded w-full">
+      </div>
+      <div class="flex flex-col col-span-3 pt-2">
+        <span class="text-gray-600 text-md font-semi-bold">{{item.food.name}}</span>
+      </div>
+      <div class="col-span-2 pt-3">
+        <div class="flex items-center space-x-2 text-sm justify-between">
+          <span class="text-gray-400">{{item.food.price | currency : 'INR'}}</span>
+          <span class="text-pink-400 font-semibold inline-block">{{item.quantity}}</span>
+          <span class="text-pink-400 font-semibold inline-block">{{item.price| currency : 'INR'}}</span>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+  <div class="font-semibold text-xl px-8 flex justify-between py-8 text-gray-600">
+    <span>Total</span>
+    <span>{{order.totoalPrice| currency : 'INR'}}</span>
+  </div>
+
+
+</div>
